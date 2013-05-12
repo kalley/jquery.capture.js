@@ -5,7 +5,8 @@ Use jQuery.Deferred() to preload images.
 
 ## Usage:
 
-```$.capture('img1.jpg')  
+```
+$.capture('img1.jpg')  
 // return jQuery.Deferred()
 
 $.capture(['img1.jpg', 'img2.jpg'])  
