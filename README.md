@@ -1,4 +1,4 @@
-jquery.captures.js
+jquery.capture.js
 =======================
 
 Use jQuery.Deferred() to preload images.
