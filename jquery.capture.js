@@ -11,11 +11,9 @@
 
     if ( src !== void 0 ) {
       if ( $.isArray(src) ) {
-        var tinyCache = [];
-        for ( var i = 0, l = src.length; i < l; ++i ) {
-          tinyCache.push($.capture(src[i]));
-        }
-        return $.when.apply($, tinyCache);
+        return $.when.apply($, this.map(src, function(val) {
+          return $.capture(val);
+        }));
       }
       if ( album[src] === void 0 ) {
         var deferred = $.Deferred();
