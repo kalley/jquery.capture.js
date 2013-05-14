@@ -9,7 +9,7 @@
   // always returns $.Deferred()
   $.capture = function(src) {
 
-    if ( src === void 0 ) {
+    if ( src !== void 0 ) {
       if ( $.isArray(src) ) {
         var tinyCache = [];
         for ( var i = 0, l = src.length; i < l; ++i ) {
@@ -35,7 +35,7 @@
   };
 
   $.fn.capture = function(options) {
-  
+
     var opts = $.extend({}, $.capture.defaults, options);
 
     return this.each(function() {
