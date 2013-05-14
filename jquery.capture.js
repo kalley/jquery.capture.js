@@ -20,8 +20,8 @@
         var deferred = $.Deferred();
 
         var preloader = new Image();
-        preloader.onload = function() { deferred.resolve(this.src); };
-        preloader.onerror = function() { deferred.reject(this.src); };
+        preloader.onload = function() { deferred.resolve(this); };
+        preloader.onerror = function() { deferred.reject(this); };
         preloader.src = src;
 
         album[src] = deferred;
