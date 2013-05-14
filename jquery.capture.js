@@ -11,7 +11,7 @@
 
     if ( src !== void 0 ) {
       if ( $.isArray(src) ) {
-        return $.when.apply($, this.map(src, function(val) {
+        return $.when.apply($, $.map(src, function(val) {
           return $.capture(val);
         }));
       }
