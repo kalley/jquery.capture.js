@@ -4,6 +4,7 @@
  *
  */
 (function($) {
+  'use strict';
   var album = {};
 
   // always returns $.Deferred()
@@ -18,7 +19,7 @@
       if ( album[src] === void 0 ) {
         var deferred = $.Deferred();
 
-        preloader = new Image();
+        var preloader = new Image();
         preloader.onload = function() { deferred.resolve(this.src); };
         preloader.onerror = function() { deferred.reject(this.src); };
         preloader.src = src;
