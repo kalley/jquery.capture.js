@@ -7,7 +7,7 @@
   'use strict';
   var album = {};
 
-  // always returns $.Deferred()
+  // always returns $.Deferred().promise()
   $.capture = function(src) {
 
     if ( src !== void 0 ) {
@@ -27,7 +27,7 @@
         album[src] = deferred;
       }
 
-      return album[src];
+      return album[src].promise();
     } else {
       return $.when.apply($, $.map(album, function(val) { return val; }));
     }
@@ -38,9 +38,11 @@
     var opts = $.extend({}, defaults, options);
 
     return this.each(function() {
-      var attr = $(this).attr(opts.attr);
+      var attr = $(this).attr(opts.attr),
+          captured;
       if ( attr ) {
-        $.data(this, 'captured', $.capture(attr));
+        captured = $.capture(attr);
+        $.data(this, 'captured', captured);
       }
     });
 
