@@ -38,18 +38,25 @@
     var opts = $.extend({}, defaults, options);
 
     return this.each(function() {
-      var attr = $(this).attr(opts.attr),
+      var _this = this,
+          attr = $(this).attr(opts.attr),
           captured;
       if ( attr ) {
         captured = $.capture(attr);
         $.data(this, 'captured', captured);
+        if ( opts.then && $.isFunction(opts.then) ) {
+          captured.promise().then(function(img) {
+            opts.then.call(_this, img, captured.promise());
+          });
+        }
       }
     });
 
   };
 
   var defaults = $.capture.defaults = {
-    attr: 'src'
+    attr: 'src',
+    then: null
   };
 
 })(jQuery);
